@@ -1,0 +1,22 @@
+<body>
+    <nav id="navbar">
+        <div id="navbar-container">
+            <h1 class="logo">{{title}}</h1>
+            <ul id="navbar-items">
+                <li>
+                    <button mat-button color="primary" routerLink="/" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Home</button>
+                  </li>
+                  <li>
+                    <button mat-button color="primary" routerLink="/sobre" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Sobre</button>
+                  </li>
+                  <li>
+                    <button mat-button color="primary" routerLink="/cadastro" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Cadastro</button>
+                  </li>
+                  
+            </ul>
+        </div>
+    </nav>
+</body>
+
+
+<router-outlet />
