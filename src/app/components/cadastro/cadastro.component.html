@@ -1,43 +1,38 @@
-
 <div style="display: flex; justify-content: center;">
-    <mat-card appearance="outlined" style="min-width: 400px ;margin-top: 10px;">
-        <mat-card-header>
-            <mat-card-title>Cadastro de usuario</mat-card-title>
-            <mat-card-subtitle>Faca parte da nossa equipe</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content >
-                <form 
-                style="display: flex; flex-direction: column;"
-                [formGroup]="formGroup" (submit)="salvar()" class="example-form">
-                    <mat-form-field class="example-full-width">
-                      <mat-label>Nome</mat-label>
-                      <input type="email" matInput formControlName="nome" 
-                            >
-                     
-                    </mat-form-field>
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Email</mat-label>
-                        <input type="email" matInput formControlName="email" 
-                             >
-                       
-                      </mat-form-field>
-                      <mat-form-field class="example-full-width">
-                        <mat-label>Senha</mat-label>
-                        <input type="password" matInput formControlName="senha" 
-                            >
-                       
-                      </mat-form-field>
-                      <mat-form-field class="example-full-width">
-                        <mat-label>Confirmar Senha</mat-label>
-                        <input type="password" matInput formControlName="confirmarSenha" 
-                           >
-                       
-                      </mat-form-field>
-                
-                      <button type="submit" mat-flat-button color="primary">Salvar</button>
-                  </form>
-           
-        </mat-card-content>
-      </mat-card>
-    
+  <mat-card appearance="outlined" style="min-width: 400px; margin-top: 10px;">
+    <mat-card-header>
+      <mat-card-title>Cadastro de usuario</mat-card-title>
+      <mat-card-subtitle>Faça parte da nossa equipe</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="formGroup" (ngSubmit)="salvar()" class="example-form" style="display: flex; flex-direction: column;">
+        
+        <mat-form-field class="example-full-width">
+          <mat-label>Nome</mat-label>
+          <input type="text" matInput formControlName="nome">
+          <span *ngIf="formGroup.controls['nome'].invalid && formGroup.controls['nome'].touched">Nome é obrigatório</span>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input type="text" matInput formControlName="email">
+          <span *ngIf="formGroup.controls['email'].invalid && formGroup.controls['email'].touched">Email é obrigatório</span>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Senha</mat-label>
+          <input type="password" matInput formControlName="senha">
+          <span *ngIf="formGroup.controls['senha'].invalid && formGroup.controls['senha'].touched">Senha é obrigatória</span>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Confirmar Senha</mat-label>
+          <input type="password" matInput formControlName="confirmarSenha">
+          <span *ngIf="formGroup.hasError('Nigual') && formGroup.controls['confirmarSenha'].touched">As senhas devem ser iguais</span>
+        </mat-form-field>
+
+        <button type="submit" mat-flat-button color="primary">Salvar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>

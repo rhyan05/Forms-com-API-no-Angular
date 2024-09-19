@@ -14,6 +14,7 @@ import { MatIcon } from '@angular/material/icon';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'] 
 })
+
 export class HomeComponent {
   title_home = "Nos conheça";
   subtitle_home = "Venha ser mais um das escolas a possuir essa nova tecnologia";
