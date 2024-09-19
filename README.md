@@ -36,6 +36,9 @@ Estilos adicionais foram aplicados para melhorar a aparência e a usabilidade da
 ![Captura de tela 2024-09-19 113425](https://github.com/user-attachments/assets/d6cca44e-b49b-4ce2-ab5c-d03e200914f4)
 
 
+![Captura de tela 2024-09-19 120857](https://github.com/user-attachments/assets/c6e0a5e6-2ba0-431f-b408-2fa211fc2d38)
+
+
 # Como Rodar
 Segue o passo a passo para utilizar esse projeto
 ## Pré-requisitos: 
