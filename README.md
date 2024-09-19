@@ -37,6 +37,7 @@ Estilos adicionais foram aplicados para melhorar a aparência e a usabilidade da
 
 
 # Como Rodar
+Segue o passo a passo para utilizar esse projeto
 ## Pré-requisitos: 
 Instale o Node.js e o Angular.
 Obs: esse projeto foi feito na versão 18.2.1. 
