@@ -33,7 +33,7 @@ export class CadastroComponent {
       senha: new FormControl('', [Validators.required]),
       confirmarSenha: new FormControl('', [Validators.required]),
       cep: new FormControl('', [Validators.required])
-    }, {validators: this.validacao_password() });
+    }, { validators: this.validacao_password() });
 
     this.formGroup.get('senha')?.valueChanges.subscribe(() => {
       this.formGroup.updateValueAndValidity();
@@ -56,34 +56,33 @@ export class CadastroComponent {
     this.endereco = null;
 
     const cep = this.formGroup.get('cep')?.value;
-    console.log("cep digitado", cep)
     if (cep.length === 8) {
       this.cepServico.getCep(cep).subscribe(
         (dados) => {
           if (dados.erro) {
             this.erro = 'CEP não encontrado';
           } else {
-            console.log("dados cep", dados)
             this.endereco = dados;
-
           }
         },
         (error) => {
           this.erro = 'Erro ao consultar o CEP';
         }
       );
-      // let retorno = await this.cepServico.getCep(cep)
-      // console.log("retorno cep", retorno)
     } else {
       this.erro = 'Digite um CEP válido (8 dígitos)';
-      this.endereco = null
+      this.endereco = null;
     }
   }
 
   salvar() {
-    if (this.formGroup.valid) {
+    if (this.formGroup.valid && !this.erro) { // Verifique se o formulário é válido e não há erro
       alert('Novo usuário cadastrado! Nome: ' + this.formGroup.value.nome + ' Email: ' + this.formGroup.value.email);
-      // alert(`Bairro: ${this.endereco.bairro}`)
+      
+      // Redefinir o formulário
+      this.formGroup.reset();
+      this.endereco = null; // Limpar o endereço
+      this.erro = ''; // Limpar mensagem de erro
     } else {
       alert('Por favor, corrija os erros no formulário.');
       this.formGroup.markAllAsTouched();

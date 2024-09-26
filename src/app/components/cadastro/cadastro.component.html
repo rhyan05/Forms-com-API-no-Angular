@@ -35,6 +35,7 @@
           <mat-label>CEP</mat-label>
           <input type="text" matInput formControlName="cep" (keyup)="consultarCep()">
           <span *ngIf="formGroup.controls['cep'].invalid && formGroup.controls['cep'].touched">CEP é obrigatório e deve conter apenas 8 dígitos numéricos</span>
+          <span *ngIf="erro">{{ erro }}</span>
         </mat-form-field>
         
         <div *ngIf="endereco">
@@ -43,7 +44,7 @@
           <p><strong>Bairro:</strong> {{ endereco.bairro }}</p>
           <p><strong>Estado:</strong> {{ endereco.estado }}</p>
           <p><strong>Regiao:</strong> {{ endereco.regiao }}</p>
-      </div>
+        </div>
 
         <button type="submit" mat-flat-button color="primary">Salvar</button>
       </form>
