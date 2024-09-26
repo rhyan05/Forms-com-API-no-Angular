@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
+import { CepService } from '../../service/cep.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -21,15 +22,19 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./cadastro.component.css']
 })
 export class CadastroComponent {
-  formGroup = new FormGroup({
-    nome: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    senha: new FormControl('', [Validators.required]),
-    confirmarSenha: new FormControl('', [Validators.required])
-  }, { validators: this.validacao_password() });
+  formGroup: FormGroup;
+  erro: string = '';
+  endereco: any;
 
-  constructor() {
-    //esse updateValue e uma funçao do angularforms, e algo ja nativo dele, basciamente, ele verfica/força o a funçao a reavalidar para ver se a funçao ainda e False ou True. Basicamente, ele vai ir e verificar se a senha foi mudada, e se foi mudada, fazer a verificaçao dela. que seria do validacao_password
+  constructor(private cepServico: CepService) {
+    this.formGroup = new FormGroup({
+      nome: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      senha: new FormControl('', [Validators.required]),
+      confirmarSenha: new FormControl('', [Validators.required]),
+      cep: new FormControl('', [Validators.required])
+    }, {validators: this.validacao_password() });
+
     this.formGroup.get('senha')?.valueChanges.subscribe(() => {
       this.formGroup.updateValueAndValidity();
     });
@@ -39,7 +44,6 @@ export class CadastroComponent {
   }
 
   validacao_password(): ValidatorFn {
-    // verifcia se senha e confirmarsenha sao iguais
     return (formGroup: AbstractControl): { [key: string]: boolean } | null => {
       const senha = formGroup.get('senha')?.value;
       const confirmarSenha = formGroup.get('confirmarSenha')?.value;
@@ -47,16 +51,42 @@ export class CadastroComponent {
     };
   }
 
-  salvar() {
-    // console.log(this.formGroup.value); 
-    // console.log(this.formGroup.status);
+  async consultarCep() {
+    this.erro = '';
+    this.endereco = null;
 
+    const cep = this.formGroup.get('cep')?.value;
+    console.log("cep digitado", cep)
+    if (cep.length === 8) {
+      this.cepServico.getCep(cep).subscribe(
+        (dados) => {
+          if (dados.erro) {
+            this.erro = 'CEP não encontrado';
+          } else {
+            console.log("dados cep", dados)
+            this.endereco = dados;
+
+          }
+        },
+        (error) => {
+          this.erro = 'Erro ao consultar o CEP';
+        }
+      );
+      // let retorno = await this.cepServico.getCep(cep)
+      // console.log("retorno cep", retorno)
+    } else {
+      this.erro = 'Digite um CEP válido (8 dígitos)';
+      this.endereco = null
+    }
+  }
+
+  salvar() {
     if (this.formGroup.valid) {
       alert('Novo usuário cadastrado! Nome: ' + this.formGroup.value.nome + ' Email: ' + this.formGroup.value.email);
+      // alert(`Bairro: ${this.endereco.bairro}`)
     } else {
       alert('Por favor, corrija os erros no formulário.');
-      this.formGroup.markAllAsTouched(); // funçao de forms reativos: https://v17.angular.io/api/forms/AbstractControl
-      //faz basicamente com que o usuario ao menos uma vez tenha interagido com cada input
+      this.formGroup.markAllAsTouched();
     }
   }
 }
