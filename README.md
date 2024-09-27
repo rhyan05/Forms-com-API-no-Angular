@@ -34,10 +34,13 @@ Estilos adicionais foram aplicados para melhorar a aparência e a usabilidade da
 ![Captura de tela 2024-09-14 181009](https://github.com/user-attachments/assets/f3e2402b-f747-4a2c-83be-ac3b410ca029)
 
 
-![Captura de tela 2024-09-19 113425](https://github.com/user-attachments/assets/d6cca44e-b49b-4ce2-ab5c-d03e200914f4)
+![Captura de tela 2024-09-26 214451](https://github.com/user-attachments/assets/8cb4c4af-0ed7-4e02-b282-b8fcf46ed078)
 
 
-![Captura de tela 2024-09-19 120857](https://github.com/user-attachments/assets/c6e0a5e6-2ba0-431f-b408-2fa211fc2d38)
+![Captura de tela 2024-09-26 214613](https://github.com/user-attachments/assets/563266aa-ef88-49c8-9798-12545839b3b3)
+
+
+![Captura de tela 2024-09-26 214657](https://github.com/user-attachments/assets/7cae9375-d2ac-466c-9bcb-0ff2764ab29b)
 
 
 # Como Rodar
