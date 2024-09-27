@@ -1,5 +1,5 @@
 # Site Realizado em Angular
-Este site foi desenvolvido com foco nos componentes do Angular, utilizando o sistema de formulários reativos. O projeto atende aos requisitos propostos para a sua criação.
+Este site foi desenvolvido com foco nos componentes do Angular, utilizando o sistema de formulários reativos. Alem do formualrio, ele tambem utiliza a API [buscaCEp](https://viacep.com.br), que como o nome diz, ele busca o CEP do usuario
 
 ## Requisitos Criados para a Criação:
 ### 1. Criação do Projeto: 
@@ -16,6 +16,7 @@ Este componente contém um formulário construído com os componentes de formul�
  - E-mail
  - Senha
  - Confirmar Senha
+ - CEP
 ### 6. Componente "Not Found":
 Um componente que exibe uma mensagem amigável quando o usuário acessa uma rota inexistente, utilizando Angular Material para uma aparência visualmente atraente.
 ### 7. Configuração de Roteamento: 
