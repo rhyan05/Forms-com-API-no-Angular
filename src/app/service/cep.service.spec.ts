@@ -1,22 +1,16 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; 
-import { Observable } from 'rxjs';
- 
-@Injectable({
-  providedIn: 'root'
-})
-export class CepService {
+import { TestBed } from '@angular/core/testing';
 
-  apiURL:string = 'https://viacep.com.br/ws' ;
+import { CepService } from './cep.service';
 
-  constructor( private http: HttpClient ) { }
+describe('CepService', () => {
+  let service: CepService;
 
-  //método
-  getCep( cep: string ) : Observable<any>  {
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(CepService);
+  });
 
-   const url = `${this.apiURL}/${cep}/json/` ;
-   return this.http.get<any>(url) ;
-
-  }
-
-}
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});
