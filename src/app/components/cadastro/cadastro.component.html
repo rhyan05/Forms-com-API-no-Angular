@@ -31,6 +31,21 @@
           <span *ngIf="formGroup.hasError('Nigual') && formGroup.controls['confirmarSenha'].touched">As senhas devem ser iguais</span>
         </mat-form-field>
 
+        <mat-form-field class="example-full-width">
+          <mat-label>CEP</mat-label>
+          <input type="text" matInput formControlName="cep" (keyup)="consultarCep()">
+          <span *ngIf="formGroup.controls['cep'].invalid && formGroup.controls['cep'].touched">CEP é obrigatório e deve conter apenas 8 dígitos numéricos</span>
+          <span *ngIf="erro">{{ erro }}</span>
+        </mat-form-field>
+        
+        <div *ngIf="endereco">
+          <h2>Endereco</h2>
+          <p><strong>Logradouro:</strong> {{ endereco.logradouro }}</p>
+          <p><strong>Bairro:</strong> {{ endereco.bairro }}</p>
+          <p><strong>Estado:</strong> {{ endereco.estado }}</p>
+          <p><strong>Regiao:</strong> {{ endereco.regiao }}</p>
+        </div>
+
         <button type="submit" mat-flat-button color="primary">Salvar</button>
       </form>
     </mat-card-content>
